@@ -1,4 +1,4 @@
-<?php include 'php/session_start.php'; ?>
+<?php session_start() ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,67 +29,22 @@
 
   <body>
 
-  <?php
-    if (isset($_SESSION['userID'])) {
-      echo 'logged in as: ' . userID;
-    } else {
-      include 'pages/login.html';
-    }
-    
-    $query = "SELECT id, name, location FROM restaurants";
-    include 'php/db_runQuery.php';
-
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            echo "id: " . $row["id"]. " - Name: " . $row["name"]. " " . $row["location"]. "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
-    include 'php/db_close.php';
-    
-  ?>
-
-      <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Restaurant Management System</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
-          </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
-        </div>
-      </div>
-    </nav>
-
-    <div id='content'></div>
+    <div id='content'>
+    <?php include 'php/buildPagePHP.php'; ?>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+    
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="vendor/bootstrap/js/holder.min.js"></script>
-    <script>
-      $(document).ready(function(){
-        $("#content").load("demo_content.txt");
-      });
-    </script>
+    <script src="js/login.js"></script>
+    <script src="js/logout.js"></script>
+    
 
   </body>
 </html>
