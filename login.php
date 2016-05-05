@@ -1,3 +1,5 @@
+    <?php include 'header.html'; ?>
+
     <div class="signin-form">
     <div class="container">
 
@@ -22,3 +24,5 @@
 
     </div>
     </div>
+
+    <?php include 'footer.html'; ?>

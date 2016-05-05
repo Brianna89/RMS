@@ -30,7 +30,7 @@ $('document').ready(function()
    $.ajax({
     
    type : 'POST',
-   url  : 'php/login.php',
+   url  : '../php/login.php',
    data : data,
    beforeSend: function()
    { 
@@ -41,10 +41,8 @@ $('document').ready(function()
       {     
      if(response=="ok"){
          
-      $("#btn-login").html('<img src="img/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
-      $.get('php/buildPageAJAX.php', function(data) {
-      $("#content").html(data);
-    });
+      $("#btn-login").html('<img src="../img/btn-ajax-loader.gif" /> &nbsp; Signing In ...');
+      window.location.href = '../index.php'
      }
     else {
          
